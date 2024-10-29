@@ -1,0 +1,66 @@
+if (window.location.href.indexOf("https://jiraet-uat.cotiviti.com/plugins/servlet/desk/portal/3/QIS-27269") != -1) {
+    jQuery(function ($) {
+        $(document).ready(function () {
+            setTimeout(function () {
+                const parent = document.getElementsByClassName("rw_request_participants_module");
+                parent[0].style.backgroundColor = "yellow";
+
+                const child_div=document.createElement('div')
+
+                // label
+                const child_input_label=document.createElement('label')
+                child_input_label.id="add_me_request_participants_input"
+                child_input_label.innerHTML="Enter Email to add Comments"
+                child_div.appendChild(child_input_label);
+
+                // input
+                const child_input=document.createElement('input')
+                child_input.id="add_me_request_participants_input"
+                child_input.placeholder="Enter Email"
+                child_div.appendChild(child_input);
+
+                //button
+                const child_button = document.createElement('button');
+                child_button.id = "AddMetoRequestParticipants"
+                child_button.innerText = "Add";
+                child_button.style.color = "blue";
+                child_div.appendChild(child_button);
+
+                parent[0].appendChild(child_div);
+
+                // check for email
+                user_email=child_input.value
+
+
+
+                // appending to parent
+
+                child_button.addEventListener("click", function () {
+                    //api call
+                    const url = "https://jiraet-uat.cotiviti.com/rest/servicedesk/1/customer/participants/QIS-27269/share";
+                    const token = "NDU3MzIyOTg4MDg2OiE1o5UFipEP4akUQ691VNSXJVex";
+                    const data = {
+                        "usernames": ["bharath.bandari@cotiviti.com"]
+                    }
+                    fetch(url, {
+                        method: "PUT",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                        .then((response) => {
+                            response.text().then((text) => {
+                                console.log("watcher added", text);
+                            });
+                        })
+                        .catch((error) => {
+                            console.log("Error while adding Watcher: ", error);
+                        });
+                });
+
+            }, 1000);
+        });
+    });
+}
