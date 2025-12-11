@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Table</title>
+    <style>
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .clearfix:before,
+        .clearfix:after {
+            content: " ";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f6f9fa;
+        }
+
+        h1 {
+            color: #ccc;
+            text-align: center;
+        }
+
+        a {
+            color: #ccc;
+            text-decoration: none;
+            outline: none;
+        }
+
+        thead tr {
+            text-align: center;
+            background: #5d3b99;
+            color: #f2f2f2;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        thead tr td {
+            text-align: center;
+            background: #5d3b99;
+            color: #f2f2f2;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .pageNumber1,
+        .pageNumber2,
+        .pageNumber3,
+        .pageNumber4,
+        .pageNumber5,
+        .pageNumber6 {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0 12px;
+            line-height: 31px;
+            height: 40px;
+            width: 70px;
+            /* max-height: 30px; */
+            background: #fff;
+            font-weight: 700;
+            border: 2px solid #DAE3F3;
+            border-radius: 0;
+            color: #272C34;
+            transition-timing-function: ease-in-out;
+            transition-property: box-shadow;
+            transition-duration: 150ms;
+
+            :hover {
+                box-shadow: 0 2px 2px rgb(39 44 52 / 12%);
+            }
+
+        }
+
+        #pagination {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        #exportBtn {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0 12px;
+            line-height: 20px;
+            height: 45px;
+            /* max-height: 50px; */
+            width: 150px;
+            background: #fff;
+            font-weight: 700;
+            border: 2px solid #DAE3F3;
+            border-radius: 0;
+            color: #272C34;
+            transition-timing-function: ease-in-out;
+            transition-property: box-shadow;
+            transition-duration: 150ms;
+
+
+            :hover {
+                box-shadow: 0 2px 2px rgb(39 44 52 / 12%);
+            }
+        }
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus {
+            color: #00B4CC;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+
+        }
+
+        .rw_html_module {
+            padding: 10px !important;
+            font-size: 16px;
+            color: #111;
+        }
+
+        /*Fun begins*/
+        .tab_container {
+            width: 96%;
+            margin: 0 auto;
+
+            position: relative;
+        }
+
+        input,
+        section {
+            clear: both;
+            padding-top: 10px;
+            display: none;
+        }
+
+        .tableHeaderUtility {
+            display: inline-flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: baseline;
+            width: 100%;
+            flex-wrap: nowrap;
+            align-content: flex-end;
+        }
+
+        #searchInput {
+            display: block !important;
+            border-radius: 5px 0px 0px 5px;
+            background: rgb(249, 250, 250);
+            border: 1px solid rgb(181, 189, 196);
+            font-size: 16px;
+            height: 40px;
+            line-height: 24px;
+            padding: 7px 8px;
+            color: rgb(8, 9, 10);
+            box-shadow: none;
+
+            :focus {
+                background-color: #fff;
+                border-color: #3b49df;
+                box-shadow: 1px 1px 0 #3b49df;
+            }
+
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 18px;
+            display: block;
+            float: left;
+            width: 20%;
+            padding: 1.5em;
+            color: #757575;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            background: #f0f0f0;
+        }
+
+        #tab1:checked~#content1,
+        #tab2:checked~#content2,
+        #tab3:checked~#content3,
+        #tab4:checked~#content4,
+        #tab5:checked~#content5 {
+            display: block;
+            padding: 20px;
+            background: #fff;
+            color: #999;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab_container .tab-content p,
+        .tab_container .tab-content h3 {
+            -webkit-animation: fadeInScale 0.7s ease-in-out;
+            -moz-animation: fadeInScale 0.7s ease-in-out;
+            animation: fadeInScale 0.7s ease-in-out;
+        }
+
+        .tab_container .tab-content h3 {
+            text-align: center;
+
+            font-weight: 700;
+            font-size: 20px;
+
+            width: 100%;
+
+            color: #757575;
+            cursor: pointer;
+
+            text-align: center;
+
+        }
+
+        .tab_container [id^="tab"]:checked+label {
+            background: #fff;
+            box-shadow: inset 0 3px #0CE;
+        }
+
+        .tab_container [id^="tab"]:checked+label .fa {
+            color: #0CE;
+        }
+
+        label .fa {
+            font-size: 1.3em;
+            margin: 0 0.4em 0 0;
+        }
+
+        /*Media query*/
+        @media only screen and (max-width: 900px) {
+            label span {
+                display: none;
+            }
+
+            .tab_container {
+                width: 98%;
+            }
+        }
+
+        /*Content Animation*/
+        @keyframes fadeInScale {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .no_wrap {
+            text-align: center;
+            color: #0ce;
+        }
+
+        .link {
+            text-align: center;
+        }
+
+        .tab-container {
+            display: flex;
+            flex-direction: row;
+            max-width: 200px;
+        }
+
+        .tab {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: block;
+        }
+
+        input[type="radio"]:checked+label {
+            background-color: #e0e0e0;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        input[type="radio"]:checked+label+.tab-content {
+            display: none;
+        }
+    </style>
+    <style>
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            font-weight: 600;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+
+        table {
+            font-family: 'Arial';
+            margin: 25px auto;
+            border-collapse: collapse;
+            border: 1px solid #eee;
+            border-bottom: 2px solid #00cccc;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.10),
+                0px 10px 20px rgba(0, 0, 0, 0.05),
+                0px 20px 20px rgba(0, 0, 0, 0.05),
+                0px 30px 20px rgba(0, 0, 0, 0.05);
+
+            tr {
+                &:hover {
+                    background: #f4f4f4;
+
+                    td {
+                        color: #555;
+                    }
+                }
+            }
+
+            th,
+            td {
+                color: #999;
+                border: 1px solid #eee;
+                padding: 12px 35px;
+                border-collapse: collapse;
+            }
+
+            th {
+                text-align: center;
+                background: #5d3b99;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 14px;
+
+                &.last {
+                    border-right: none;
+                }
+            }
+        }
+    </style>
+
+    <script>
+
+        var jiraSoftData = []
+        var jsmData = []
+        var jiraCoreData = []
+        var jiraJsmData = []
+        const pageSize = 20;
+        let currentPage = 1;
+        let filteredData = [];
+        var data = [];
+        baseUrl = 'https://jiraet-uat.cotiviti.com'
+        
+        function fetchAppDetails() {
+            fetch(baseUrl + '/rest/plugins/applications/1.0/installed/jira-software/')
+                .then(response => response.json())
+                .then(item => {
+                    jiraSoftData = item
+                    const tableContainer = document.querySelector('#jiraSoftDiv');
+                    const table = document.createElement("table");
+
+                    // Create table header
+                    const thead = document.createElement("thead");
+                    const headerRow = thead.insertRow();
+                    headerRow.insertCell().textContent = "Property";
+                    headerRow.insertCell().textContent = "Value";
+                    table.appendChild(thead);
+                    tableContainer.appendChild(table);
+                    // Create table body
+                    const tbody = document.createElement("tbody");
+                    Object.entries(jiraSoftData).forEach(([key, value]) => {
+                        if (typeof value === 'object') {
+                            console.log(key + ":");
+                            Object.entries(value).forEach(([nestedKey, nestedValue]) => {
+                                if (nestedKey != "rawLicense" && typeof nestedValue !== 'object') {
+                                    const row = tbody.insertRow();
+                                    row.insertCell().textContent = nestedKey;
+                                    row.insertCell().textContent = nestedValue;
+                                }
+
+                            });
+                        } else {
+                            const row = tbody.insertRow();
+                            row.insertCell().textContent = key;
+                            row.insertCell().textContent = value;
+                        }
+                    });
+                    table.appendChild(tbody);
+                    tableContainer.appendChild(table);
+                })
+                .catch(error => console.error('Error:', error));
+
+
+        }
+
+        function fetchJsmDetails() {
+            fetch(baseUrl + '/rest/plugins/applications/1.0/installed/jira-servicedesk/')
+                .then(response => response.json())
+                .then(item => {
+                    jiraJsmData = item
+                    const jsmContainer = document.querySelector('#jsmDataDiv');
+                    const jsmTable = document.createElement("table");
+
+                    // Create table header
+                    const jsmThead = document.createElement("thead");
+                    const jsmHeaderRow = jsmThead.insertRow();
+                    jsmHeaderRow.insertCell().textContent = "Property";
+                    jsmHeaderRow.insertCell().textContent = "Value";
+                    jsmTable.appendChild(jsmThead);
+                    jsmContainer.appendChild(jsmTable);
+                    // Create table body
+                    const jsmTBody = document.createElement("tbody");
+                    Object.entries(jiraJsmData).forEach(([key, value]) => {
+                        if (typeof value === 'object') {
+                            console.log(key + ":");
+                            Object.entries(value).forEach(([nestedKey, nestedValue]) => {
+                                if (nestedKey != "rawLicense" && typeof nestedValue !== 'object') {
+                                    const row = jsmTBody.insertRow();
+                                    row.insertCell().textContent = nestedKey;
+                                    row.insertCell().textContent = nestedValue;
+                                }
+
+                            });
+                        } else {
+                            const jsmRow = jsmTBody.insertRow();
+                            jsmRow.insertCell().textContent = key;
+                            jsmRow.insertCell().textContent = value;
+                        }
+                    });
+                    jsmTable.appendChild(jsmTBody);
+                    jsmContainer.appendChild(jsmTable);
+                })
+                .catch(error => console.error('Error:', error));
+
+        }
+
+        function fetchJiraCore() {
+            fetch(baseUrl + '/rest/plugins/applications/1.0/installed/jira-core/')
+                .then(response => response.json())
+                .then(item => {
+                    jiraCoreData = item
+                    const jiraCoreContainer = document.querySelector('#jiraCoreDiv');
+                    const jiratCoreTable = document.createElement("table");
+
+                    // Create table header
+                    const jiraCoreThead = document.createElement("thead");
+                    const jiraCoreHeaderRow = jiraCoreThead.insertRow();
+                    jiraCoreHeaderRow.insertCell().textContent = "Property";
+                    jiraCoreHeaderRow.insertCell().textContent = "Value";
+                    jiratCoreTable.appendChild(jiraCoreThead);
+                    jiraCoreContainer.appendChild(jiratCoreTable);
+                    // Create table body
+                    const jiraCoreTbody = document.createElement("tbody");
+                    Object.entries(jiraCoreData).forEach(([key, value]) => {
+                        if (typeof value === 'object') {
+                            console.log(key + ":");
+                            Object.entries(value).forEach(([nestedKey, nestedValue]) => {
+                                if (nestedKey != "rawLicense" && typeof nestedValue !== 'object') {
+                                    const row = jiraCoreTbody.insertRow();
+                                    row.insertCell().textContent = nestedKey;
+                                    row.insertCell().textContent = nestedValue;
+                                }
+
+                            });
+                        } else {
+                            const jiraCoreRow = jiraCoreTbody.insertRow();
+                            jiraCoreRow.insertCell().textContent = key;
+                            jiraCoreRow.insertCell().textContent = value;
+                        }
+                    });
+                    jiratCoreTable.appendChild(jiraCoreTbody);
+                    jiraCoreContainer.appendChild(jiratCoreTable);
+                })
+                .catch(error => console.error('Error:', error));
+
+        }
+
+        function renderTable(pageData) {
+            const pliuginTableBody = document.querySelector('#dataTable tbody');
+            pliuginTableBody.innerHTML = '';
+            pageData.forEach(rowData => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${rowData.name}</td><td>${rowData.version}</td><td>${rowData.enabled}</td><td>${rowData.vendor.name}</td>`;
+                pliuginTableBody.appendChild(row);
+            });
+        }
+
+
+        function fetchData() {
+            fetch(baseUrl + '/rest/plugins/1.0/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('achal.khawale.1@cotiviti.com:MTk3NDA/eIHXahH'),
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(item => {
+                    data = item.plugins.filter(plugin => plugin.userInstalled == true);
+                    renderTable(paginateData(data, currentPage));
+                    renderPagination(Math.ceil(data.length / pageSize));
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function paginateData(data, page) {
+            const startIndex = (page - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            return data.slice(startIndex, endIndex);
+        }
+
+        function renderPagination(totalPages) {
+            const pagination = document.querySelector('#pagination');
+            pagination.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.classList.add("pageNumber" + i);
+                pageBtn.textContent = i;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    renderTable(paginateData(filteredData, currentPage));
+                });
+                pagination.appendChild(pageBtn);
+            }
+        }
+
+        function applySearchFilter() {
+            const searchValue = document.querySelector('#searchInput').value.toLowerCase().trim();
+            filteredData = data.filter(row =>
+                Object.values(row).some(value =>
+                    value.toString().toLowerCase().includes(searchValue)
+                )
+            );
+            currentPage = 1;
+            renderTable(paginateData(filteredData, currentPage));
+            renderPagination(Math.ceil(filteredData.length / pageSize));
+        }
+
+        document.querySelector('#searchInput').addEventListener('input', applySearchFilter);
+        document.addEventListener("DOMContentLoaded", applySearchFilter);
+
+        function applySort(field) {
+            filteredData.sort((a, b) => {
+                if (a[field] < b[field]) return -1;
+                if (a[field] > b[field]) return 1;
+                return 0;
+            });
+            renderTable(paginateData(filteredData, currentPage));
+        }
+
+        document.querySelectorAll('#dataTable th').forEach(th => {
+            th.addEventListener('click', () => {
+                const field = th.getAttribute('data-field');
+                applySort(field);
+            });
+        });
+
+        function exportToCsv() {
+            const csvContent = "data:text/csv;charset=utf-8," + data.map(row => Object.values(row).join(",")).join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "JiraAppDetails.csv");
+            document.body.appendChild(link);
+            link.click();
+        }
+
+        document.querySelector('#exportBtn').addEventListener('click', exportToCsv);
+        fetchData();
+        filteredData = data;
+        renderTable(paginateData(filteredData, 1));
+        renderPagination(Math.ceil(filteredData.length / 20));
+
+        fetchAppDetails();
+        fetchJsmDetails();
+        fetchJiraCore();
+        applySearchFilter();
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>PLATFORM DASHBOARD</h1>
+    <div class="tab_container">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1"><i class="fa fa-code"></i><span>JRA SOFTWARE</span></label>
+
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2"><i class="fa fa-pencil-square-o"></i><span>JSM</span></label>
+
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3"><i class="fa fa-bar-chart-o"></i><span>JIRA CORE</span></label>
+
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4"><i class="fa fa-folder-open-o"></i><span>CONFLUENCE</span></label>
+
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5"><i class="fa fa-envelope-o"></i><span>PLUGINS</span></label>
+
+        <section id="content1" class="tab-content">
+            <h3>JIRA SOFTWARE DETAILS</h3>
+            <p>
+            <div id="jiraSoftDiv"></div>
+            </p>
+        </section>
+
+        <section id="content2" class="tab-content">
+            <h3>JIRA SERVICE MANAGEMENT DETAILS</h3>
+            <p>
+            <div id="jsmDataDiv">
+
+            </div>
+            </p>
+        </section>
+
+        <section id="content3" class="tab-content">
+            <h3>JIRA CORE DETAILS</h3>
+            <p>
+            <div id="jiraCoreDiv">
+
+            </div>
+            </p>
+        </section>
+        <section id="content4" class="tab-content">
+            <h3>JIRA confluence DETAILS</h3>
+            <p>
+            <div id="jiraConfluenceDiv">
+
+            </div>
+            </p>
+        </section>
+        <section id="content5" class="tab-content">
+            <h3>PLIUGIN DETAILS</h3>
+            <p>
+            <div class="tableHeaderUtility">
+                <div class="wrap">
+                    <div class="search">
+                        <input id="searchInput" type="text" class="searchTerm" placeholder="What are you looking for?">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="exportBtn"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export</button>
+
+            </div>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th data-field="name">Name <i class="fa fa-sort" aria-hidden="true"></i>
+                        </th>
+                        <th data-field="version">Version <i class="fa fa-sort" aria-hidden="true"></i>
+                        </th>
+                        <th data-field="enabled">Enabled <i class="fa fa-sort" aria-hidden="true"></i>
+                        </th>
+                        <th data-field="vendor">Vendor <i class="fa fa-sort" aria-hidden="true"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
+            <div id="pagination"></div>
+            </p>
+        </section>
+    </div>
+
+</body>
+
+</html>
