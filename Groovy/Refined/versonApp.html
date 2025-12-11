@@ -1,0 +1,1932 @@
+<html>
+
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script>
+        AJS.$("#newTest").on("click", function () {
+            console.log("jiraApp");
+            jiraAppDetails = [];
+            for (var i = 0; i < jiraApplicationData.length; i++) {
+                jiraAppDetails.push(jiraApplicationData[i]);
+                var environment = jiraAppDetails[i].environment;
+                var ApplicationTypeJSM = jiraAppDetails[i].ApplicationTypeJSM;
+                var jsmLicenseExp = jiraAppDetails[i].jsmLicenseExp;
+                var jsmSEN = jiraAppDetails[i].jsmSEN;
+                var jsmVersion = jiraAppDetails[i].jsmVersion;
+                var jsmLictype = jiraAppDetails[i].jsmLictype;
+                var ApplicationTypeJiraSoft =
+                    jiraAppDetails[i].ApplicationTypeJiraSoft;
+                var jiraSoftVersion = jiraAppDetails[i].jiraSoftVersion;
+                var jiraSoftLicenseExp = jiraAppDetails[i].jiraSoftLicenseExp;
+                var jiraSoftSEN = jiraAppDetails[i].jiraSoftSEN;
+                var jiraSoftLictype = jiraAppDetails[i].jiraSoftLictype;
+
+                varCardElement = document.createElement("section");
+                varCardElement.className = "cardElement";
+                varCardElement.innerHTML =
+                    '<section class="developmentDetails">' +
+                    '<h1 class="envHeading">' +
+                    environment +
+                    "</h1>" +
+                    '<table class="content-table" id="jsmDetails">' +
+                    "<tr>" +
+                    '<th class="center-align" colspan="2">' +
+                    ApplicationTypeJSM +
+                    "</th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "Version" +
+                    "</td>" +
+                    "<td>" +
+                    jsmVersion +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License expires" +
+                    "</td>" +
+                    "<td>" +
+                    jsmLicenseExp +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "SEN" +
+                    "</td>" +
+                    "<td>" +
+                    jsmSEN +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License type" +
+                    "</td>" +
+                    "<td>" +
+                    jsmLictype +
+                    "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    '<table class="content-table" id="jiraSoftDetails">' +
+                    "<tr>" +
+                    '<th class="center-align" colspan="2">' +
+                    ApplicationTypeJiraSoft +
+                    "</th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "Version" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftVersion +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License expires" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftLicenseExp +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "SEN" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftSEN +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License type" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftLictype +
+                    "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "</section>";
+
+                if (
+                    document.getElementsByClassName("cardElement").length <
+                    jiraApplicationData.length
+                ) {
+                    document
+                        .getElementById("jiraAppDetailSection")
+                        .append(varCardElement);
+                }
+            }
+        });
+        AJS.$("#newTest2").on("click", function () {
+            console.log("hi");
+            confluenceDetails = [];
+            for (var i = 0; i < confluenceApplicationData.length; i++) {
+                confluenceDetails.push(confluenceApplicationData[i]);
+                var environment = confluenceDetails[i].environment;
+                var ApplicationType = confluenceDetails[i].ApplicationType;
+                var Version = confluenceDetails[i].Version;
+                var licenseExp = confluenceDetails[i].licenseExp;
+                var sen = confluenceDetails[i].sen;
+                var lictype = confluenceDetails[i].lictype;
+                var confluenceElement = document.createElement("section");
+                confluenceElement.className = "confluenceDetails";
+                confluenceElement.innerHTML =
+                    '<section class="developmentDetails">' +
+                    '<h1 class="envHeading">' +
+                    environment +
+                    "</h1>" +
+                    '<table class="content-table">' +
+                    "<tr>" +
+                    '<th class="center-align" colspan="2">' +
+                    ApplicationType +
+                    "</th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "Version" +
+                    "</td>" +
+                    "<td>" +
+                    Version +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License expires" +
+                    "</td>" +
+                    "<td>" +
+                    licenseExp +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "SEN" +
+                    "</td>" +
+                    "<td>" +
+                    sen +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License type" +
+                    "</td>" +
+                    "<td>" +
+                    lictype +
+                    "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "</section>";
+                if (
+                    document.getElementsByClassName("confluenceDetails").length <
+                    confluenceApplicationData.length
+                ) {
+                    document
+                        .getElementById("confluenceDetailsSection")
+                        .append(confluenceElement);
+                }
+            }
+            console.log(ApplicationType);
+        });
+        AJS.$("#newTest3").on("click", function () {
+            pluginsDetails = [];
+            for (var i = 0; i < pluginsData.length; i++) {
+                pluginsDetails.push(pluginsData[i]);
+                var pluginName = pluginsDetails[i].pluginName;
+                var pluginAvailableVersion = pluginsDetails[i].availableVersion;
+                var vendor = pluginsDetails[i].vendor;
+                var devVersion = pluginsDetails[i].devVersion;
+                var qaVersion = pluginsDetails[i].qaVersion;
+                var uatVersion = pluginsDetails[i].uatVersion;
+                var sandboxVersion = pluginsDetails[i].sandboxVersion;
+                var prodVersion = pluginsDetails[i].prodVersion;
+
+                var devBadge = document.createElement("tr");
+                devBadge.className = "devBadge";
+                devBadge.innerHTML =
+                    "<tr>" +
+                    "<td>" +
+                    pluginName +
+                    "</td>" +
+                    "<td>" +
+                    vendor +
+                    "</td>" +
+                    "<td>" +
+                    pluginAvailableVersion +
+                    "</td>" +
+                    "<td>" +
+                    devVersion +
+                    "</td>" +
+                    "<td>" +
+                    qaVersion +
+                    "</td>" +
+                    "<td>" +
+                    uatVersion +
+                    "</td>" +
+                    "<td>" +
+                    sandboxVersion +
+                    "</td>" +
+                    "<td>" +
+                    prodVersion +
+                    "</td>" +
+                    "</tr>";
+                if (
+                    document.getElementsByClassName("devBadge").length <
+                    pluginsData.length
+                ) {
+                    document.getElementById("devPluginDetails").append(devBadge);
+                }
+            }
+        });
+        jQuery(document).ready(function () {
+            console.log("jiraAppmytest APp -load on page load");
+            jiraAppDetails = [];
+            for (var i = 0; i < jiraApplicationData.length; i++) {
+                jiraAppDetails.push(jiraApplicationData[i]);
+                var environment = jiraAppDetails[i].environment;
+                var ApplicationTypeJSM = jiraAppDetails[i].ApplicationTypeJSM;
+                var jsmLicenseExp = jiraAppDetails[i].jsmLicenseExp;
+                var jsmSEN = jiraAppDetails[i].jsmSEN;
+                var jsmVersion = jiraAppDetails[i].jsmVersion;
+                var jsmLictype = jiraAppDetails[i].jsmLictype;
+                var ApplicationTypeJiraSoft =
+                    jiraAppDetails[i].ApplicationTypeJiraSoft;
+                var jiraSoftVersion = jiraAppDetails[i].jiraSoftVersion;
+                var jiraSoftLicenseExp = jiraAppDetails[i].jiraSoftLicenseExp;
+                var jiraSoftSEN = jiraAppDetails[i].jiraSoftSEN;
+                var jiraSoftLictype = jiraAppDetails[i].jiraSoftLictype;
+
+                varCardElement = document.createElement("section");
+                varCardElement.className = "cardElement";
+                varCardElement.innerHTML =
+                    '<section class="developmentDetails">' +
+                    '<h1 class="envHeading">' +
+                    environment +
+                    "</h1>" +
+                    '<table class="content-table" id="jsmDetails">' +
+                    "<tr>" +
+                    '<th class="center-align" colspan="2">' +
+                    ApplicationTypeJSM +
+                    "</th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "Version" +
+                    "</td>" +
+                    "<td>" +
+                    jsmVersion +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License expires" +
+                    "</td>" +
+                    "<td>" +
+                    jsmLicenseExp +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "SEN" +
+                    "</td>" +
+                    "<td>" +
+                    jsmSEN +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License type" +
+                    "</td>" +
+                    "<td>" +
+                    jsmLictype +
+                    "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    '<table class="content-table" id="jiraSoftDetails">' +
+                    "<tr>" +
+                    '<th class="center-align" colspan="2">' +
+                    ApplicationTypeJiraSoft +
+                    "</th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "Version" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftVersion +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License expires" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftLicenseExp +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "SEN" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftSEN +
+                    "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td>" +
+                    "License type" +
+                    "</td>" +
+                    "<td>" +
+                    jiraSoftLictype +
+                    "</td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "</section>";
+
+                if (
+                    document.getElementsByClassName("cardElement").length <
+                    jiraApplicationData.length
+                ) {
+                    document
+                        .getElementById("jiraAppDetailSection")
+                        .append(varCardElement);
+                }
+            }
+        });
+    </script>
+    <style>
+        #jiraAppDetailSection {
+            overflow-x: scroll;
+        }
+
+        .rw_module {
+            padding-top: 0 !important;
+        }
+
+        /* test updated 3- to 4 */
+        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(5) {
+            display: inline-block !important;
+        }
+
+        .tab {
+            overflow: hidden;
+        }
+
+        /* Style the buttons inside the tab */
+
+        table {
+            font-family: "Arial";
+            margin: 25px auto;
+            border-collapse: collapse;
+            border: 1px solid #eee;
+            border-bottom: 2px solid #00cccc;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1),
+                0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05),
+                0px 30px 20px rgba(0, 0, 0, 0.05);
+
+            tr {
+                &:hover {
+                    background: #f4f4f4;
+
+                    td {
+                        color: #555;
+                    }
+                }
+            }
+
+            th,
+            td {
+                color: #999;
+                border: 1px solid #eee;
+                padding: 10px;
+                border-collapse: collapse;
+            }
+
+            th {
+                text-align: center;
+                background: #5d3b99;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 12px;
+
+                &.last {
+                    border-right: none;
+                }
+            }
+        }
+
+        .accordion>input[type="checkbox"] {
+            position: absolute;
+            left: -100vw;
+        }
+
+        .accordion .content {
+            overflow-y: hidden;
+            height: 0;
+            transition: height 0.3s ease;
+        }
+
+        .accordion>input[type="checkbox"]:checked~.content {
+            height: auto;
+            overflow: visible;
+        }
+
+        .accordion label {
+            display: block;
+        }
+
+        /*
+ Styling
+*/
+
+        .accordion {
+            margin-bottom: 1em;
+        }
+
+        .accordion>input[type="checkbox"]:checked~.content {
+            padding: 15px;
+            border: 1px solid #e8e8e8;
+            border-top: 0;
+        }
+
+        .accordion .handle {
+            margin: 0;
+            font-size: 1.125em;
+            line-height: 1.2em;
+        }
+
+        .accordion label {
+            color: #333;
+            cursor: pointer;
+            font-weight: normal;
+            padding: 15px;
+            background: #e8e8e8;
+        }
+
+        .accordion label:hover,
+        .accordion label:focus {
+            background: #d8d8d8;
+        }
+
+        .accordion .handle label:before {
+            font-family: "fontawesome";
+            content: "\f054";
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.58em;
+            line-height: 1.556em;
+            vertical-align: middle;
+        }
+
+        .accordion>input[type="checkbox"]:checked~.handle label:before {
+            content: "\f078";
+        }
+
+        /*
+ Demo purposes only
+*/
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 40px;
+        }
+
+        a {
+            color: #06c;
+        }
+
+        p {
+            margin: 0 0 1em;
+        }
+
+        h1 {
+            margin: 0 0 1.5em;
+            font-weight: 600;
+            font-size: 1.5em;
+        }
+
+        .accordion {
+            max-width: 65em;
+        }
+
+        .accordion p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+    <style>
+        * {
+            font-family: sans-serif;
+            /* Change your font family */
+        }
+
+        .center-align {
+            text-align: center;
+        }
+
+        section {
+            padding: 1%;
+        }
+
+        .header-section {
+            background-image: url(https://jiraet.cotiviti.com/plugins/servlet/desk/resource/global/imagebank/images/Header-Banner.png);
+            width: 100%;
+            height: 11%;
+            color: white;
+            font-weight: 600;
+            font-size: 30px;
+            text-align: right;
+            padding-right: 10%;
+            padding-top: 1.5%;
+        }
+
+        .envHeading {
+            background: #ec008c;
+            font-size: 22px;
+            color: white;
+            text-align: center;
+            padding: 2%;
+        }
+
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            border-radius: 5px 5px 0 0;
+            overflow: scroll;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            font-weight: 600;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+    </style>
+
+    <style>
+        .tabset>input[type="radio"] {
+            position: absolute;
+            left: -200vw;
+        }
+
+        .tabset .tab-panel {
+            display: none;
+        }
+
+        .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+        .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+        .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+        .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+        .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+        .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6) {
+            display: inline-flex;
+            width: 135%;
+        }
+
+        body {
+            font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .tabset>label {
+            position: relative;
+            display: inline-block;
+            padding: 15px 15px 25px;
+            border: 1px solid transparent;
+            border-bottom: 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .tabset>label::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            width: 22px;
+            height: 4px;
+            background: #8d8d8d;
+        }
+
+        input:focus-visible+label {
+            outline: 2px solid rgba(0, 102, 204, 1);
+            border-radius: 3px;
+        }
+
+        .tabset>label:hover,
+        .tabset>input:focus+label,
+        .tabset>input:checked+label {
+            color: #06c;
+            background: aliceblue;
+        }
+
+        .tabset>label:hover::after,
+        .tabset>input:focus+label::after,
+        .tabset>input:checked+label::after {
+            background: #06c;
+        }
+
+        .tabset>input:checked+label {
+            border-color: #ccc;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+
+        .tab-panel {
+            padding: 30px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 0px;
+            margin-top: 0;
+        }
+
+        .tabset {
+            max-width: 65em;
+        }
+
+        #pluginDetailsSection,
+        #confluenceDetailsSection,
+        #jiraAppDetailSection {
+            padding: 0;
+        }
+
+        /* test */
+        #rowFreezer {
+            position: sticky !important;
+            top: 1px !important;
+        }
+
+        #inputSearchDiv {
+            padding-top: 27px;
+
+        }
+
+        #searchJiraPluginId {
+            padding: 5px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            box-shadow: 1px 2px 5px rgb(168, 168, 227);
+            width: 400px;
+            height: 40px;
+        }
+
+        #searchConfluencePluginId {
+            padding: 5px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            box-shadow: 1px 2px 5px rgb(168, 168, 227);
+            width: 400px;
+            height: 40px;
+        }
+
+        #confluenceDetailsSection {
+            /* display: flex !important; */
+        }
+
+
+
+        /* responsive */
+
+        /* @media only screen and (min-width: 1232px) {
+      #jiraAppDetailSection {
+        width: 100% !important;
+        overflow: scroll !important;
+      }
+    }
+    */
+        @media only screen and (min-width: 1410px) {
+            #jiraAppDetailSection {
+                width: 100%;
+                overflow: unset;
+
+            }
+        }
+
+        @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+            #jiraAppDetailSection {
+                width: 100%;
+                overflow: auto;
+
+            }
+        }
+    </style>
+</head>
+
+<!-- <div class="header-section">
+    <div class="logo">
+        Platform Dashboard
+    </div>
+</div> -->
+<div class="tabset">
+    <input type="radio" name="tabset" id="jiraApp" aria-controls="jiraAppDetailSection" checked />
+    <label for="jiraApp" id="newTest">JiraET</label>
+    <input type="radio" name="tabset" id="plugin" aria-controls="pluginDetailsSection" />
+    <label for="plugin" id="newTest3">JiraET Plugins</label>
+    <input type="radio" name="tabset" id="confluenceApp" aria-controls="confluenceDetailsSection" />
+    <label for="confluenceApp" id="newTest2">ConfluenceET</label>
+    <input type="radio" name="tabset" id="confluencePlugin" aria-controls="confluencePluginDetails" />
+    <label for="confluencePlugin" id="newTest4">ConfluenceET Plugins</label>
+
+    <div class="tab-panels">
+        <section id="jiraAppDetailSection" class="tab-panel testpanel"></section>
+        <section id="pluginDetailsSection" class="tab-panel">
+            <!-- test search functionality -->
+            <div>
+                <div id="inputSearchDiv">
+                    <input type="text" name="searchJiraPlugin" id="searchJiraPluginId" placeholder="Search with Plugin Name or Vendor or Version" />
+                </div>
+                <table id="devPluginDetails" style="width: 1100px;">
+                    <tr>
+                        <th colspan="3">Plugin Details</th>
+                        <th colspan="6">Installed Version</th>
+                    </tr>
+                    <tr id="rowFreezer">
+                        <th colspan="1">Plugin Name</th>
+                        <th colspan="1">Vendor</th>
+                        <th colspan="1">Available Version</th>
+                        <th colspan="1">Dev</th>
+                        <th colspan="1">UAT</th>
+                        <th colspan="1">QA</th>
+                        <th colspan="1">SandBox</th>
+                        <th colspan="1">PROD</th>
+                        <th colspan="1">Stage</th>
+                    </tr>
+                    <tbody id="devPluginDetailsData"></tbody>
+                </table>
+            </div>
+        </section>
+        <section id="confluenceDetailsSection" class="tab-panel"></section>
+
+        <section id="confluencePluginDetails" class="tab-panel">
+            <!-- confluence Plugin Details -->
+            <div>
+                <div>
+                    <input type="text" name="searchJiraPlugin" id="searchConfluencePluginId" placeholder="Search with Plugin Name or Vendor or Version" />
+                </div>
+                <table id="devConfluenceDetails" style="width: 1100px;">
+                    <tr>
+                        <th colspan="3">Plugin Details</th>
+                        <th colspan="6">Installed Version</th>
+                    </tr>
+                    <tr id="rowFreezer">
+                        <th colspan="1">Plugin Name</th>
+                        <th colspan="1">Vendor</th>
+                        <th colspan="1">Available Version</th>
+                        <th colspan="1">Dev</th>
+                        <th colspan="1">SandBox</th>
+                        <th colspan="1">PROD</th>
+                    </tr>
+                    <tbody id="devConfluenceDetailsData"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    var confluenceApplicationData = [
+        {
+            environment: "DEVELOPMENT",
+            ApplicationType: "CONFLUENCE",
+            Version: "7.19.22",
+            licenseExp: "15/Dec/24 EST",
+            sen: "SEN-51849486",
+            lictype: "Commercial(Data Center)",
+        },
+        {
+            environment: "PRODUCTION",
+            ApplicationType: "CONFLUENCE",
+            Version: "7.19.22",
+            licenseExp: "15/Dec/24 EST",
+            sen: "SEN-51849486",
+            lictype: "Commercial(Data Center)",
+        },
+        {
+            environment: "SANDBOX",
+            ApplicationType: "CONFLUENCE",
+            Version: "7.19.22",
+            licenseExp: "15/Dec/24 EST",
+            sen: "SEN-51849486",
+            lictype: "Commercial(Data Center)",
+        },
+    ];
+
+    var jiraApplicationData = [
+        {
+            environment: "DEVELOPMENT",
+            ApplicationTypeJSM: "JIRA SERVICE MANAGEMENT",
+            jsmVersion: "5.4.20",
+            jsmLicenseExp: "15/Dec/24 EST",
+            jsmSEN: "SEN-17916892",
+            jsmLictype: "Commercial(Data Center)",
+            ApplicationTypeJiraSoft: "JIRA SOFTWARE",
+            jiraSoftVersion: "9.4.20",
+            jiraSoftLicenseExp: "15/Dec/24 EST",
+            jiraSoftSEN: "SEN-17916892",
+            jiraSoftLictype: "Commercial (Data Center)",
+        },
+        {
+            environment: "QA",
+            ApplicationTypeJSM: "JIRA SERVICE MANAGEMENT",
+            jsmVersion: "5.4.20",
+            jsmLicenseExp: "15/Dec/24 EST",
+            jsmSEN: "SEN-17916892",
+            jsmLictype: "Commercial(Data Center)",
+            ApplicationTypeJiraSoft: "JIRA SOFTWARE",
+            jiraSoftVersion: "9.4.20",
+            jiraSoftLicenseExp: "15/Dec/24 EST",
+            jiraSoftSEN: "SEN-22061797",
+            jiraSoftLictype: "Commercial (Data Center)",
+        },
+        {
+            environment: "UAT",
+            ApplicationTypeJSM: "JIRA SERVICE MANAGEMENT",
+            jsmVersion: "5.4.18",
+            jsmLicenseExp: "15/Dec/24 EST",
+            jsmSEN: "SEN-17916892",
+            jsmLictype: "Commercial(Data Center)",
+            ApplicationTypeJiraSoft: "JIRA SOFTWARE",
+            jiraSoftVersion: "9.4.18",
+            jiraSoftLicenseExp: "15/Dec/24 EST",
+            jiraSoftSEN: "SEN-22061797",
+            jiraSoftLictype: "Commercial (Data Center)",
+        },
+        {
+            environment: "sandbox",
+            ApplicationTypeJSM: "JIRA SERVICE MANAGEMENT",
+            jsmVersion: "5.4.20",
+            jsmLicenseExp: "15/Dec/24 EST",
+            jsmSEN: "SEN-17916892",
+            jsmLictype: "Commercial(Data Center)",
+            ApplicationTypeJiraSoft: "JIRA SOFTWARE",
+            jiraSoftVersion: "9.4.20",
+            jiraSoftLicenseExp: "15/Dec/24 EST",
+            jiraSoftSEN: "SEN-22061797",
+            jiraSoftLictype: "Commercial (Data Center)",
+        },
+        {
+            environment: "Stage",
+            ApplicationTypeJSM: "JIRA SERVICE MANAGEMENT",
+            jsmVersion: "5.4.20",
+            jsmLicenseExp: "15/Dec/24 EST",
+            jsmSEN: "SEN-17916892",
+            jsmLictype: "Commercial(Data Center)",
+            ApplicationTypeJiraSoft: "JIRA SOFTWARE",
+            jiraSoftVersion: "9.4.20",
+            jiraSoftLicenseExp: "15/Dec/24 EST",
+            jiraSoftSEN: "SEN-22061797",
+            jiraSoftLictype: "Commercial (Data Center)",
+        },
+        {
+            environment: "Production",
+            ApplicationTypeJSM: "JIRA SERVICE MANAGEMENT",
+            jsmVersion: "5.4.20",
+            jsmLicenseExp: "15/Dec/24 EST",
+            jsmSEN: "SEN-17916892",
+            jsmLictype: "Commercial(Data Center)",
+            ApplicationTypeJiraSoft: "JIRA SOFTWARE",
+            jiraSoftVersion: "9.4.20",
+            jiraSoftLicenseExp: "15/Dec/24 EST",
+            jiraSoftSEN: "SEN-22061797",
+            jiraSoftLictype: "Commercial (Data Center)",
+        },
+    ];
+
+    var pluginsData = [
+        {
+            pluginName: "Active Directory Attributes Sync",
+            vendor: "Deviniti",
+            availableVersion: "3.5.3",
+            devVersion: "3.4.0",
+            qaVersion: "3.4.0",
+            uatVersion: "3.4.0",
+            sandboxVersion: "3.4.0",
+            prodVersion: "3.4.0",
+            stageVersion: "3.4.0",
+        },
+        {
+            pluginName: "Adaptavist ScriptRunner for JIRA",
+            vendor: "Adaptavist.com Ltd",
+            availableVersion: "8.28.1",
+            devVersion: "8.19.0",
+            qaVersion: "7.12.0",
+            uatVersion: "7.12.0",
+            sandboxVersion: "7.12.0",
+            prodVersion: "7.12.0",
+            stageVersion: "7.12.0",
+        },
+        {
+            pluginName: "Advanced Password Policy for Jira",
+            vendor: "Deviniti",
+            availableVersion: "3.2.4",
+            devVersion: "3.2.2",
+            qaVersion: "3.2.2",
+            uatVersion: "3.2.2",
+            sandboxVersion: "3.2.2",
+            prodVersion: "3.2.2",
+            stageVersion: "3.2.2",
+        },
+        {
+            pluginName: "Atlassian REST API Browser",
+            vendor: "Atlassian",
+            availableVersion: "",
+            devVersion: "3.2.3",
+            qaVersion: "3.2.3",
+            uatVersion: "3.2.3",
+            sandboxVersion: "3.2.3",
+            prodVersion: "3.2.3",
+            stageVersion: "3.2.3",
+        },
+        {
+            pluginName: "Atlassian Troubleshooting and Support Tools",
+            vendor: "Atlassian",
+            availableVersion: "1.56.1",
+            devVersion: "1.50.2",
+            qaVersion: "1.50.2",
+            uatVersion: "1.50.2",
+            sandboxVersion: "1.50.2",
+            prodVersion: "1.50.2",
+            stageVersion: "1.50.2",
+        },
+        {
+            pluginName: "Automation for Jira",
+            vendor: "Atlassian",
+            availableVersion: "9.1.1",
+            devVersion: "8.2.4",
+            qaVersion: "8.2.4",
+            uatVersion: "8.2.4",
+            sandboxVersion: "8.2.4",
+            prodVersion: "8.2.4",
+            stageVersion: "8.2.4",
+        },
+        {
+            pluginName: "CRM for JIRA - Customers and Sales",
+            vendor: "Teamlead",
+            availableVersion: "1.14.19",
+            devVersion: "1.14.16",
+            qaVersion: "1.14.11.1",
+            uatVersion: "1.14.16",
+            sandboxVersion: "1.14.11.1",
+            prodVersion: "1.14.16",
+            stageVersion: "1.14.11.1",
+        },
+        {
+            pluginName: "Canned Responses for JIRA",
+            vendor: "Appfire",
+            availableVersion: "2.8.46",
+            devVersion: "2.8.39",
+            qaVersion: "2.8.39",
+            uatVersion: "2.8.39",
+            sandboxVersion: "2.8.39",
+            prodVersion: "2.8.39",
+            stageVersion: "2.8.39",
+        },
+        {
+            pluginName: "Configuration Manager for Jira (CMJ)",
+            vendor: "Appfire",
+            availableVersion: "6.15.3",
+            devVersion: "6.12.2",
+            qaVersion: "6.12.2",
+            uatVersion: "6.12.2",
+            sandboxVersion: "6.12.2",
+            prodVersion: "6.12.2",
+            stageVersion: "6.12.2",
+        },
+        {
+            pluginName: "Cross Project Queues",
+            vendor: "Deviniti",
+            availableVersion: "3.7.1",
+            devVersion: "3.0.2",
+            qaVersion: "3.0.2",
+            uatVersion: "3.0.2",
+            sandboxVersion: "3.0.2",
+            prodVersion: "3.0.2",
+            stageVersion: "3.0.2",
+        },
+        {
+            pluginName: "Doublecheck for Jira Service Management",
+            vendor: "Accxia GmbH",
+            availableVersion: "4.1.4.4",
+            devVersion: "4.1.3.0",
+            qaVersion: "4.1.3.0",
+            uatVersion: "4.1.3.0",
+            sandboxVersion: "4.1.3.0",
+            prodVersion: "4.1.3.0",
+            stageVersion: "4.1.3.0",
+        },
+        {
+            pluginName: "Dynamic Forms for Jira",
+            vendor: "Deviniti",
+            availableVersion: "7.0.0",
+            devVersion: "6.3.4",
+            qaVersion: "6.3.4",
+            uatVersion: "6.3.4",
+            sandboxVersion: "6.3.4",
+            prodVersion: "6.3.4",
+            stageVersion: "6.3.4",
+        },
+        {
+            pluginName: "Dynamic Forms for Jira",
+            vendor: "Deviniti",
+            availableVersion: "6.6.0",
+            devVersion: "6.3.4",
+            qaVersion: "6.3.4",
+            uatVersion: "6.3.4",
+            sandboxVersion: "6.3.4",
+            prodVersion: "6.3.4",
+            stageVersion: "6.3.4",
+        },
+        {
+            pluginName: "Email This Issue Server",
+            vendor: "META-INF KFT",
+            availableVersion: "9.11.0-GA",
+            devVersion: "9.9.1-GA",
+            qaVersion: "9.3.3-GA",
+            uatVersion: "9.3.3-GA",
+            sandboxVersion: "9.3.3-GA",
+            prodVersion: "9.3.3-GA",
+            stageVersion: "9.3.3-GA",
+        },
+        {
+            pluginName: "Enhancer Plugin for JIRA",
+            vendor: "Snapbytes",
+            availableVersion: "6.23.2",
+            devVersion: "6.17.0",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Enterprise Mail Handler (JEMH) for Jira Data Center",
+            vendor: "The Plugin People",
+            availableVersion: "4.1.46-dc",
+            devVersion: "3.4.11-dc",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Extension for Jira Service Desk",
+            vendor: "Deviniti",
+            availableVersion: "6.14.8",
+            devVersion: "6.14.1",
+            qaVersion: "6.14.0",
+            uatVersion: "6.14.0",
+            sandboxVersion: "6.14.0",
+            prodVersion: "6.14.0",
+            stageVersion: "6.14.0",
+        },
+        {
+            pluginName: "Groupee Group Assignee",
+            vendor: "White Software",
+            availableVersion: "4.1.4",
+            devVersion: "2.5.0",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Home Directory & Database Browser for Jira",
+            vendor: "Votazz",
+            availableVersion: "1.38.5",
+            devVersion: "1.38.1",
+            qaVersion: "1.34.0",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Assets Discovery",
+            vendor: "Atlassian",
+            availableVersion: "7.0.3",
+            devVersion: "3.1.6",
+            qaVersion: "2.29.0",
+            uatVersion: "3.1.6",
+            sandboxVersion: "NA",
+            prodVersion: "6.2.1",
+            stageVersion: "6.1.14",
+        },
+        {
+            pluginName: "Integrity Check for Jira",
+            vendor: "Appfire",
+            availableVersion: "6.15.3",
+            devVersion: "6.12.2",
+            qaVersion: "6.12.2",
+            uatVersion: "6.12.2",
+            sandboxVersion: "6.12.2",
+            prodVersion: "6.12.2",
+            stageVersion: "6.12.2",
+        },
+        {
+            pluginName: "Issue Templates for Jira",
+            vendor: "Deviniti",
+            availableVersion: "8.3.21",
+            devVersion: "8.3.7",
+            qaVersion: "8.3.7",
+            uatVersion: "8.3.7",
+            sandboxVersion: "8.3.7",
+            prodVersion: "8.3.7",
+            stageVersion: "8.3.7",
+        },
+        {
+            pluginName: "Issue History Printer for Jira",
+            vendor: "CURVC Corp.",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "1.1.5",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "JIRA Toolkit Plugin",
+            vendor: "Atlassian",
+            availableVersion: "",
+            devVersion: "1.0.0",
+            qaVersion: "1.0.0",
+            uatVersion: "1.0.0",
+            sandboxVersion: "1.0.0",
+            prodVersion: "1.0.0",
+            stageVersion: "1.0.0",
+        },
+        {
+            pluginName: "Jira Cloud Migration Assistant",
+            vendor: "Atlassian",
+            availableVersion: "1.11.3",
+            devVersion: "1.9.17",
+            qaVersion: "1.9.17",
+            uatVersion: "1.9.17",
+            sandboxVersion: "1.9.17",
+            prodVersion: "1.9.17",
+            stageVersion: "1.9.17",
+        },
+        {
+            pluginName: "Jira Comment Toolbox",
+            vendor: "Kostebek Teknoloji",
+            availableVersion: "6.1.0",
+            devVersion: "NA",
+            qaVersion: "5.0.0",
+            uatVersion: "5.0.0",
+            sandboxVersion: "5.0.0",
+            prodVersion: "5.0.0",
+            stageVersion: "5.0.0",
+        },
+        {
+            pluginName: "Jira Misc Workflow Extensions",
+            vendor: "Appfire",
+            availableVersion: "8.6.2",
+            devVersion: "8.2.0",
+            qaVersion: "8.2.0",
+            uatVersion: "8.2.0",
+            sandboxVersion: "8.2.0",
+            prodVersion: "8.2.0",
+            stageVersion: "8.2.0",
+        },
+        {
+            pluginName: "Jira Workflow Toolbox",
+            vendor: "Decadis AG",
+            availableVersion: "3.4.1",
+            devVersion: "3.3.0",
+            qaVersion: "3.3.0",
+            uatVersion: "3.3.0",
+            sandboxVersion: "3.3.0",
+            prodVersion: "3.3.0",
+            stageVersion: "3.3.0",
+        },
+        {
+            pluginName: "JSU Automation Suite for Jira Workflows",
+            vendor: "Appfire",
+            availableVersion: "2.48.0",
+            devVersion: "2.42.0",
+            qaVersion: "2.42.0",
+            uatVersion: "2.42.0",
+            sandboxVersion: "2.42.0",
+            prodVersion: "2.42.0",
+            stageVersion: "2.42.0",
+        },
+        {
+            pluginName: "LiveChat",
+            vendor: "Deviniti",
+            availableVersion: "NA",
+            devVersion: "1.3.1",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Microsoft Teams Jira Connector",
+            vendor: "Move Work Forward",
+            availableVersion: "7.14.12",
+            devVersion: "5.09.12",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "PagerDuty",
+            vendor: "PagerDuty",
+            availableVersion: "4.3.4.1",
+            devVersion: "4.3.1.0",
+            qaVersion: "4.3.1.0",
+            uatVersion: "4.3.2",
+            sandboxVersion: "4.3.2",
+            prodVersion: "4.3.2",
+            stageVersion: "4.3.2",
+        },
+        {
+            pluginName: "Raley Emails Notifications for Jira/JSM",
+            vendor: "Inversiones Raley C.A",
+            availableVersion: "NA",
+            devVersion: "4.8.2-J8",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Raley Emails Notifications for Jira/JSM",
+            vendor: "Inversiones Raley C.A",
+            availableVersion: "NA",
+            devVersion: "4.8.2-J8",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Refined for Jira Service Management",
+            vendor: "Refined",
+            availableVersion: "3.7.2",
+            devVersion: "3.7.2",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "3.6.1",
+            prodVersion: "NA",
+            stageVersion: "3.6.1",
+        },
+        {
+            pluginName: "Refined for Jira Service Management - Mobile",
+            vendor: "Refined",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Refined for Jira Service Management - Widgets",
+            vendor: "Refined",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Refined for Jira Service Management - Widgets",
+            vendor: "Refined",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "RefinedTheme for Jira",
+            vendor: "Refined",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Smart Checklist for Jira",
+            vendor: "Railsware Products, Inc.",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Time to SLA",
+            vendor: "Everit Kft.",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Webhook to Jenkins for Bitbucket",
+            vendor: "Mohami",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+        {
+            pluginName: "Webhooks for Bitbucket",
+            vendor: "StiltSoft",
+            availableVersion: "NA",
+            devVersion: "NA",
+            qaVersion: "NA",
+            uatVersion: "NA",
+            sandboxVersion: "NA",
+            prodVersion: "NA",
+            stageVersion: "NA",
+        },
+    ];
+
+    var confluenceData = [
+        {
+            pluginName: "Aura",
+            vendor: "Appanvil",
+            availableVersion: "3.8.6",
+            devVersion: "3.8.6",
+            sandboxVersion: "3.8.6",
+            prodVersion: "3.8.6"
+        },
+        {
+            pluginName: "System App: Search Analytics",
+            vendor: "bitvoodoo ag",
+            availableVersion: "NA",
+            devVersion: "1.2.9-bundle",
+            sandboxVersion: "1.3.12-bundle",
+            prodVersion: "1.3.12-bundle"
+        },
+        {
+            pluginName: "System App: Attachment Tracking",
+            vendor: "bitvoodoo ag",
+            availableVersion: "NA",
+            devVersion: "1.1.18-bundle",
+            sandboxVersion: "1.2.10-bundle",
+            prodVersion: "1.2.10-bundle"
+        },
+        {
+            pluginName: "System App: Analytics Core",
+            vendor: "bitvoodoo ag",
+            availableVersion: "NA",
+            devVersion: "1.3.4",
+            sandboxVersion: "1.5.2",
+            prodVersion: "1.5.2"
+        },
+        {
+            pluginName: "System App: Administration UI",
+            vendor: "bitvoodoo ag",
+            availableVersion: "NA",
+            devVersion: "1.2.5",
+            sandboxVersion: "1.3.18",
+            prodVersion: "1.3.18"
+        },
+        {
+            pluginName: "Viewtracker - Analytics for Confluence",
+            vendor: "bitvoodoo ag",
+            availableVersion: "NA",
+            devVersion: "7.2.6",
+            sandboxVersion: "7.5.7",
+            prodVersion: "7.5.7"
+        },
+        {
+            pluginName: "Refined for Confluence",
+            vendor: "Refined",
+            availableVersion: "NA",
+            devVersion: "7.3.10",
+            sandboxVersion: "7.3.10",
+            prodVersion: "7.3.10"
+        },
+        {
+            pluginName: "Redirect for Confluence",
+            vendor: "bitvoodoo ag",
+            availableVersion: "NA",
+            devVersion: "2.0.4",
+            sandboxVersion: "2.0.5",
+            prodVersion: "2.0.5"
+        },
+        {
+            pluginName: "E-Mail this Page",
+            vendor: "venITure GmbH",
+            availableVersion: "NA",
+            devVersion: "2.1.16-2023-05-16-14-15",
+            sandboxVersion: "2.1.18-2754f62",
+            prodVersion: "2.1.14-17b6947"
+        },
+        {
+            pluginName: "Comala Document Management",
+            vendor: "Appfire",
+            availableVersion: "NA",
+            devVersion: "7.1.1",
+            sandboxVersion: "7.3.0",
+            prodVersion: "7.1.1"
+        },
+        {
+            pluginName: "RefinedToolkit for Confluence",
+            vendor: "Refined",
+            availableVersion: "NA",
+            devVersion: "2.4.3",
+            sandboxVersion: "2.3.9",
+            prodVersion: "2.3.9"
+
+        },
+        {
+            pluginName: "Page View Tracker",
+            vendor: "Old Street Solutions",
+            availableVersion: "NA",
+            devVersion: "NA",
+            sandboxVersion: "5.15",
+            prodVersion: "5.15"
+        },
+        {
+            pluginName: "Tracking Plugin",
+            vendor: "ServiceRocket",
+            availableVersion: "NA",
+            devVersion: "4.4.6",
+            sandboxVersion: "1.14.11.1",
+            prodVersion: "NA"
+        },
+        {
+            pluginName: "Visibility for Confluence",
+            vendor: "ServiceRocket",
+            availableVersion: "NA",
+            devVersion: "5.3.1",
+            sandboxVersion: "NA",
+            prodVersion: "NA"
+        },
+        {
+            pluginName: "ServiceRocket Utility Library",
+            vendor: "ServiceRocket",
+            availableVersion: "NA",
+            devVersion: "2.5.8",
+            sandboxVersion: "NA",
+            prodVersion: "NA"
+        },
+        {
+            pluginName: "Atlassian Centralized License Visibility Plugin",
+            vendor: "Atlassian",
+            availableVersion: "NA",
+            devVersion: "1.1.4",
+            sandboxVersion: "NA",
+            prodVersion: "NA"
+        },
+        {
+            pluginName: "Advanced Roadmaps for Jira in Confluence",
+            vendor: "Atlassian",
+            availableVersion: "NA",
+            devVersion: "1.2.3",
+            sandboxVersion: "NA",
+            prodVersion: "NA"
+        },
+        {
+            pluginName: "Page Views",
+            vendor: "White Software",
+            availableVersion: "NA",
+            devVersion: "2.5.0",
+            sandboxVersion: "NA",
+            prodVersion: "NA"
+        },
+
+    ];
+
+    function getConfluenceDetails() {
+        confluenceDetails = [];
+        for (var i = 0; i < confluenceApplicationData.length; i++) {
+            confluenceDetails.push(confluenceApplicationData[i]);
+            var environment = confluenceDetails[i].environment;
+            var ApplicationType = confluenceDetails[i].ApplicationType;
+            var Version = confluenceDetails[i].Version;
+            var licenseExp = confluenceDetails[i].licenseExp;
+            var sen = confluenceDetails[i].sen;
+            var lictype = confluenceDetails[i].lictype;
+            var confluenceElement = document.createElement("section");
+            confluenceElement.className = "confluenceDetails";
+            confluenceElement.innerHTML =
+                '<section class="developmentDetails">' +
+                '<h1 class="envHeading">' +
+                environment +
+                "</h1>" +
+                '<table class="content-table">' +
+                "<tr>" +
+                '<th class="center-align" colspan="2">' +
+                ApplicationType +
+                "</th>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "Version" +
+                "</td>" +
+                "<td>" +
+                Version +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "License expires" +
+                "</td>" +
+                "<td>" +
+                licenseExp +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "SEN" +
+                "</td>" +
+                "<td>" +
+                sen +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "License type" +
+                "</td>" +
+                "<td>" +
+                lictype +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                "</section>";
+            if (
+                document.getElementsByClassName("confluenceDetails").length <
+                confluenceApplicationData.length
+            ) {
+                document
+                    .getElementById("confluenceDetailsSection")
+                    .append(confluenceElement);
+            }
+        }
+    }
+
+    function getConfluencePluginDetails(data) {
+        const devBadgeEle = document.getElementsByClassName("devConfluenceBadge");
+        const insertEle = document.getElementById("devConfluenceDetailsData");
+        insertEle.innerHTML = ""; //for re-rendering the filtered results
+        data?.map((ele) => {
+            var devBadge = document.createElement("tr");
+            devBadge.className = "devConfluenceBadge";
+            devBadge.innerHTML = `<tr>
+                <td>${ele.pluginName}</td>
+                <td>${ele.vendor}</td>
+                <td>${ele.availableVersion}</td>
+                <td>${ele.devVersion}</td>
+                <td>${ele.sandboxVersion}</td>
+                <td>${ele.prodVersion}</td>
+                </tr>`;
+            return (
+                //   devBadgeEle.length < pluginsData.length &&
+                insertEle.appendChild(devBadge)
+            );
+        });
+    }
+
+    function getPluginDetails(data) {
+        //   pluginsDetails = [];
+        //   for (var i = 0; i < pluginsData.length; i++) {
+        //     pluginsDetails.push(pluginsData[i]);
+        //     var pluginName = pluginsDetails[i].pluginName;
+        //     var pluginAvailableVersion = pluginsDetails[i].availableVersion;
+        //     var vendor = pluginsDetails[i].vendor;
+        //     var devVersion = pluginsDetails[i].devVersion;
+        //     var qaVersion = pluginsDetails[i].qaVersion;
+        //     var uatVersion = pluginsDetails[i].uatVersion;
+        //     var sandboxVersion = pluginsDetails[i].sandboxVersion;
+        //     var prodVersion = pluginsDetails[i].prodVersion;
+
+        //     var devBadge = document.createElement('tr');
+        //     devBadge.className = 'devBadge';
+        //     devBadge.innerHTML =
+        //       '<tr>' +
+        //       '<td>' + pluginName + '</td>' + '<td>' + vendor + '</td>' + '<td>' + pluginAvailableVersion + '</td>' +
+        //       '<td>' + devVersion + '</td>' + '<td>' + qaVersion + '</td>' +
+        //       '<td>' + uatVersion + '</td>' + '<td>' + sandboxVersion + '</td>' + '<td>' + prodVersion + '</td>'
+        //       + '</tr>'
+        //     if (document.getElementsByClassName("devBadge").length < pluginsData.length) {
+        //       document.getElementById('devPluginDetails').append(devBadge);
+        //     }
+        //   }
+
+        //test
+        const devBadgeEle = document.getElementsByClassName("devBadge");
+        const insertEle = document.getElementById("devPluginDetailsData");
+        insertEle.innerHTML = ""; //for re-rendering the filtered results
+        data?.map((ele) => {
+            var devBadge = document.createElement("tr");
+            devBadge.className = "devBadge";
+            devBadge.innerHTML = `<tr>
+                <td>${ele.pluginName}</td>
+                <td>${ele.vendor}</td>
+                <td>${ele.availableVersion}</td>
+                <td>${ele.devVersion}</td>
+                <td>${ele.uatVersion}</td>
+                <td>${ele.qaVersion}</td>
+                <td>${ele.sandboxVersion}</td>
+                <td>${ele.prodVersion}</td>
+                <td>${ele.stageVersion}</td>
+                </tr>`;
+            return (
+                //   devBadgeEle.length < pluginsData.length &&
+                insertEle.appendChild(devBadge)
+            );
+        });
+    }
+
+    function getJiraApplicationDetails() {
+        jiraAppDetails = [];
+        for (var i = 0; i < jiraApplicationData.length; i++) {
+            jiraAppDetails.push(jiraApplicationData[i]);
+            var environment = jiraAppDetails[i].environment;
+            var ApplicationTypeJSM = jiraAppDetails[i].ApplicationTypeJSM;
+            var jsmLicenseExp = jiraAppDetails[i].jsmLicenseExp;
+            var jsmSEN = jiraAppDetails[i].jsmSEN;
+            var jsmVersion = jiraAppDetails[i].jsmVersion;
+            var jsmLictype = jiraAppDetails[i].jsmLictype;
+            var ApplicationTypeJiraSoft = jiraAppDetails[i].ApplicationTypeJiraSoft;
+            var jiraSoftVersion = jiraAppDetails[i].jiraSoftVersion;
+            var jiraSoftLicenseExp = jiraAppDetails[i].jiraSoftLicenseExp;
+            var jiraSoftSEN = jiraAppDetails[i].jiraSoftSEN;
+            var jiraSoftLictype = jiraAppDetails[i].jiraSoftLictype;
+
+            varCardElement = document.createElement("section");
+            varCardElement.className = "cardElement";
+            varCardElement.innerHTML =
+                '<section class="developmentDetails">' +
+                '<h1 class="envHeading">' +
+                environment +
+                "</h1>" +
+                '<table class="content-table" id="jsmDetails">' +
+                "<tr>" +
+                '<th class="center-align" colspan="2">' +
+                ApplicationTypeJSM +
+                "</th>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "Version" +
+                "</td>" +
+                "<td>" +
+                jsmVersion +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "SEN" +
+                "</td>" +
+                "<td>" +
+                jsmSEN +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "License type" +
+                "</td>" +
+                "<td>" +
+                jsmLictype +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                '<table class="content-table" id="jiraSoftDetails">' +
+                "<tr>" +
+                '<th class="center-align" colspan="2">' +
+                ApplicationTypeJiraSoft +
+                "</th>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "Version" +
+                "</td>" +
+                "<td>" +
+                jiraSoftVersion +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "SEN" +
+                "</td>" +
+                "<td>" +
+                jiraSoftSEN +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "License type" +
+                "</td>" +
+                "<td>" +
+                jiraSoftLictype +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                "</section>";
+
+            if (
+                document.getElementsByClassName("cardElement").length <
+                jiraApplicationData.length
+            ) {
+                document
+                    .getElementById("jiraAppDetailSection")
+                    .append(varCardElement);
+            }
+        }
+    }
+
+    jQuery(document).ready(function () {
+        console.log("jiraAppmytest APp -load on page load");
+        jiraAppDetails = [];
+        for (var i = 0; i < jiraApplicationData.length; i++) {
+            jiraAppDetails.push(jiraApplicationData[i]);
+            var environment = jiraAppDetails[i].environment;
+            var ApplicationTypeJSM = jiraAppDetails[i].ApplicationTypeJSM;
+            var jsmLicenseExp = jiraAppDetails[i].jsmLicenseExp;
+            var jsmSEN = jiraAppDetails[i].jsmSEN;
+            var jsmVersion = jiraAppDetails[i].jsmVersion;
+            var jsmLictype = jiraAppDetails[i].jsmLictype;
+            var ApplicationTypeJiraSoft = jiraAppDetails[i].ApplicationTypeJiraSoft;
+            var jiraSoftVersion = jiraAppDetails[i].jiraSoftVersion;
+            var jiraSoftLicenseExp = jiraAppDetails[i].jiraSoftLicenseExp;
+            var jiraSoftSEN = jiraAppDetails[i].jiraSoftSEN;
+            var jiraSoftLictype = jiraAppDetails[i].jiraSoftLictype;
+
+            varCardElement = document.createElement("section");
+            varCardElement.className = "cardElement";
+            varCardElement.innerHTML =
+                '<section class="developmentDetails">' +
+                '<h1 class="envHeading">' +
+                environment +
+                "</h1>" +
+                '<table class="content-table" id="jsmDetails">' +
+                "<tr>" +
+                '<th class="center-align" colspan="2">' +
+                ApplicationTypeJSM +
+                "</th>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "Version" +
+                "</td>" +
+                "<td>" +
+                jsmVersion +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "SEN" +
+                "</td>" +
+                "<td>" +
+                jsmSEN +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "License type" +
+                "</td>" +
+                "<td>" +
+                jsmLictype +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                '<table class="content-table" id="jiraSoftDetails">' +
+                "<tr>" +
+                '<th class="center-align" colspan="2">' +
+                ApplicationTypeJiraSoft +
+                "</th>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "Version" +
+                "</td>" +
+                "<td>" +
+                jiraSoftVersion +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "SEN" +
+                "</td>" +
+                "<td>" +
+                jiraSoftSEN +
+                "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" +
+                "License type" +
+                "</td>" +
+                "<td>" +
+                jiraSoftLictype +
+                "</td>" +
+                "</tr>" +
+                "</table>" +
+                "</section>";
+
+            if (
+                document.getElementsByClassName("cardElement").length <
+                jiraApplicationData.length
+            ) {
+                document
+                    .getElementById("jiraAppDetailSection")
+                    .append(varCardElement);
+            }
+        }
+    });
+
+    // test
+    getConfluencePluginDetails(confluenceData);
+    getPluginDetails(pluginsData);
+    getConfluenceDetails();
+    getJiraApplicationDetails();
+    //script for search functionality jira plugings
+    const searchEle = document.getElementById("searchJiraPluginId");
+    searchEle.addEventListener("input", function () {
+        const searchValue = searchEle.value.toLowerCase(); //abc
+        const filteredResults = pluginsData.filter(({ pluginName, vendor,availableVersion }) => {
+            const searchLower = searchValue.trim().toLowerCase();
+            return [pluginName, vendor,availableVersion].some(field => field?.toLowerCase().includes(searchLower));
+        });
+        //rendering filtered data
+        getPluginDetails(filteredResults);
+    });
+    //script for search functionality jira plugings
+    const searchEleConfluence = document.getElementById(
+        "searchConfluencePluginId"
+    );
+    searchEleConfluence.addEventListener("input", function () {
+        const searchValue = searchEleConfluence.value.toLowerCase(); //abc
+        const filteredResults = pluginsData.filter(({ pluginName, vendor,availableVersion }) => {
+            const searchLower = searchValue.trim().toLowerCase();
+            return [pluginName, vendor,availableVersion].some(field => field?.toLowerCase().includes(searchLower));
+        });
+        //rendering filtered data
+        getConfluencePluginDetails(filteredResults);
+    });
+</script>
+
+</html>
