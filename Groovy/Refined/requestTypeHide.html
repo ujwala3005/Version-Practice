@@ -1,0 +1,25 @@
+<html>
+<script>
+    setTimeout(function(){
+         const text = 'Client Enablement Team';
+         let found = false;
+         for (const div of document.querySelectorAll('div.rw_request_type_card_container')) {
+           if (div.textContent.includes(text)) {
+             div.style.display = 'none';
+             found = true;
+             break;
+           }
+         }
+         if (!found) {
+           for (const div of document.querySelectorAll('.rw_request_type_card')) {
+             if (div.textContent.includes(text)) {
+               div.style.display = 'none';
+               break;
+             }
+           }
+         }
+             },2000)
+</script>
+ 
+</style>
+</html>
