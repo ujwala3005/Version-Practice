@@ -1,0 +1,279 @@
+<style>
+    /* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+visibility: hidden;
+    min-width: 250px;
+    /* margin-left: -125px; */
+    background: transparent linear-gradient(90deg, #3A0F75 0%, #63108B 100%) 0% 0% no-repeat padding-box;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 20px;
+    top: 60px;
+
+    height: 25px;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+  animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+#contact.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+.terms-btn{
+ cursor: pointer;
+    height: 100%;
+  margin: 1% !important;
+  width:100px;
+    background-color: Crimson;
+    color: white;
+    padding: .7em;
+    text-decoration: none !important;
+    background: transparent linear-gradient(90deg, #3A0F75 0%, #63108B 100%) 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+    /* text-align: left; */
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: #FFFFFF;
+    opacity: 1;
+    border: none;
+    font-size: 13px;
+    font-family: SegoeUI; 
+}
+.terms-heading{
+    box-shadow: inset 0 19px 20px rgb(0 0 0 / 0.22), -3px 6px 20px 0px rgba(0,0,0,0.22);
+}
+
+.terms-heading h1{
+
+color: #30006e
+}
+
+.terms-subheading{
+     color: #9074ce; 
+}
+terms-btn-panel {
+    padding-top: 5%;
+} 
+
+
+.messagepop {
+background-color: #FFFFFF;
+       box-shadow: 0 25px 50px -12px rgb(0 0 0);
+    cursor: pointer;
+    display: none;
+    margin-top: 15px;
+    position: fixed;
+    top: 20%;
+    text-align: center;
+    /* width: 394px; */
+    z-index: 50;
+    padding: 0px 0px 20px 0px; 
+
+    left: 18%;
+    right: 18%;
+}
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.messagepop p, .messagepop.div {
+    border-bottom: 1px solid #EFEFEF;
+    margin: 30px;
+    padding-bottom: 8px;
+    text-align: justify;
+}
+#termsCheckbox{
+  padding-left:46%;
+  width:100%;
+}
+@media screen and (min-width: 1400px) {
+.messagepop {
+
+    top: 35%;
+
+}
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+.messagepop {
+    background-color: #FFFFFF;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0);
+    cursor: pointer;
+    display: none;
+    margin-top: 15px;
+    position: fixed;
+    top: 6%;
+    text-align: center;
+    /* width: 394px; */
+    z-index: 50;
+    padding: 0px 0px 20px 0px;
+    left: 1%;
+    right: 1%;
+}
+}
+</style>
+<script>
+    
+jQuery(function($){
+ 
+      $("#log_out").attr("href", "/login.jsp");
+  var checked=false
+  AJS.$('#login-form-submit').css('cursor', 'not-allowed');
+
+    AJS.$('#login-form-submit').attr('title', 'Please Agree to Terms and Conditions');
+  AJS.$("#login-form-submit").attr("disabled", !this.checked);
+   AJS.$(".jira-login-item").append("<div class='messagepop pop'>\
+                                <div><div class='terms-heading'><h1>Terms Of Service</h1></div>\
+                                <h2 class='terms-subheading'>Cotiviti Acceptable Use, Consent and Prohibition on Sensitive Data (PHI/PII)</h2>\
+     <p>This system is to be used only by authorized persons for the business purpose of Cotiviti.\
+     Use of this system implies consent of the user to monitoring and responsibilities to preserve the confidentiality, \
+       integrity and availability of the resources accessed.</p><p>Cotiviti is committed to ensuring the privacy and confidentiality\
+       of Sensitive Data, including Protected Health Information (PHI) and Personally Identifiable Information (PII).\
+       To ensure privacy, never share any Sensitive Data (PHI/PII) on this portal.</p>\
+         </div>\
+<div><button class='close terms-btn accept'>Accept</button><button id='alert' class='close terms-btn reject''>Decline</button></div>\
+         </div>");
+  // $(".jira-login-item").append("<div id='termsCheckbox'><input class='checkBox' id='termsCondition' type='checkbox'/>I accept the <a id='contact'>Terms & Condition</a></div>");
+    AJS.$(".jira-login-item").append("<fieldset class='group'><div class='checkbox'><input class='checkbox' id='termsCondition' type='checkbox' value='true'/><span class='aui-form-glyph'></span><label for='termsCondition' >I accept the <a id='contact'>Terms & Conditions</a></label></div></fieldset>");
+     AJS.$(".jira-login-item").append("<div id='snackbar'>Please Agree to the Terms and Conditions</div>");   
+  
+});
+
+AJS.$(function() {
+  AJS.$('#alert').on('click', function() {
+
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+
+});
+  });
+ AJS.$(function() {
+
+AJS.$(".reject").on("click", function() {
+  AJS.$("#termsCondition").prop("checked", false);
+AJS.$("#login-form-submit").attr("disabled", true);
+      AJS.$('#login-form-submit').css('cursor', 'not-allowed');
+    AJS.$('#login-form-submit').attr('title', 'Please Agree to Terms and Conditions');
+  
+});
+ 
+  })
+
+ AJS.$(function() {
+
+AJS.$(".accept").on("click", function() {
+  AJS.$("#termsCondition").prop("checked", true);
+  AJS.$("#login-form-submit").attr("disabled", false);
+    AJS.$('#login-form-submit').css('cursor', 'pointer');
+       AJS.$('#login-form-submit').attr('title', '');
+});
+ 
+  })
+
+  
+ 
+ 
+  AJS.$(function() {
+  AJS.$("#termsCondition").on('click', function() {
+var checked=false
+ if(AJS.$(this).hasClass('selected')) {
+
+      deselect(AJS.$(this));               
+    } else {
+      AJS.$(this).addClass('selected');
+      AJS.$('.pop').slideFadeToggle();
+    }
+
+  AJS.$("#login-form-submit").attr("disabled", !this.checked);
+    if(this.checked){
+       AJS.$('#login-form-submit').css('cursor', 'pointer');
+       AJS.$('#login-form-submit').attr('title', '');
+    }
+    else{
+    AJS.$('#login-form-submit').css('cursor', 'not-allowed');
+    AJS.$('#login-form-submit').attr('title', 'Please Agree to Terms and Conditions');
+       var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+    }
+  
+   
+});
+  })
+  
+  function deselect(e) {
+  AJS.$('.pop').slideFadeToggle(function() {
+    e.removeClass('selected');
+  });    
+}
+
+
+AJS.$(function() {
+  AJS.$('#contact').on('click', function() {
+    if(AJS.$(this).hasClass('selected')) {
+ 
+      deselect(AJS.$(this));               
+    } else {
+      AJS.$(this).addClass('selected');
+      AJS.$('.pop').slideFadeToggle();
+    }
+    return false;
+  });
+
+  AJS.$('.close').on('click', function() {
+    deselect(AJS.$('#contact'));
+    return false;
+  });
+});
+
+
+
+
+AJS.$.fn.slideFadeToggle = function(easing, callback) {
+  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+};
+
+
+
+</script>
