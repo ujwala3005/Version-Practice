@@ -1,0 +1,32 @@
+package com.listeners.Incident
+
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.util.DefaultIssueChangeHolder
+import com.atlassian.jira.issue.ModifiedValue
+import com.atlassian.crowd.embedded.impl.ImmutableGroup
+
+CustomFieldManager customFieldManager = ComponentAccessor.getCustomFieldManager()
+def issueManager=ComponentAccessor.getIssueManager()
+
+
+def issue=event.issue
+if(issue.getIssueType().getName()=="Incident")
+{
+    def change=event?.getChangeLog()?.getRelated("ChildChangeItem")?.find{it.field=='priority'}    // Group Picker Name
+    
+    
+    if(change)
+    {
+		def s=issue.priority.name
+        
+        def cf = customFieldManager.getCustomFieldObjectByName("Incident Priority")   //DropDown Name
+        def customFieldValue = issue.getCustomFieldValue(cf)
+       
+        
+ 
+        cf.updateValue(null,issue,new ModifiedValue(customFieldValue, s),new DefaultIssueChangeHolder())
+        
+    }
+}
